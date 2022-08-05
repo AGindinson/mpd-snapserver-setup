@@ -20,6 +20,17 @@ audio_output {
     mixer_type      "software"
 }
 ```
+
+Also adjust `snapserver` configuration:
+- Run `sudo nano /etc/snapserver.conf`
+- Find and comment out the line(s) beginning with `stream =`
+- Alongside, add the following line:
+```
+source = pipe:///tmp/snapfifo?name=Radio&sampleformat=48000:16:2&codec=flac
+```
+- Note that actual values for `sampleformat`, `codec`, etc. may have
+  to be adjusted depending on the specific Icecast2 stream parameters.
+
 Launch `mpd` and `snapserver`:
 ```
 sudo systemctl start mpd
