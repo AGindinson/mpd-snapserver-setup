@@ -39,3 +39,10 @@ sudo systemctl start snapserver
 sudo systemctl enable mpd
 sudo systemctl enable snapserver
 ```
+# Launching MPD to Snapserver playback
+```
+mpc add http://<icecast2_stream_address>
+mpc volume +50 # By default, it's set to 0; 100 is the maximum value
+mpc play
+# If needed, toggle off with mpc stop
+```
